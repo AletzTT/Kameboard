@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} | Home{% endblock %}
+{% block body %}
+<div class="text-center">
+    <img src="{{ url_for('static', filename='img/logo.svg')}}" alt="KameBoard Logo" width="300">
+    <h1 class="text-primary">Kame<strong class="text-success">Board</strong></h1>
+    <br>
+    <p>Aun no has iniciado sesión</p>
+    <br><hr><br>
+    <a href="#" role="button" class="btn btn-primary btn-lg mr-4"> Inicia Sesión</a>
+    <a href="#" role="button" class="btn btn-success btn-lg ml-4">Regístrate</a>
+</div>
+
+{% endblock %}

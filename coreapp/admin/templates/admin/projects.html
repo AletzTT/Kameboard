@@ -1,0 +1,113 @@
+{% extends "admin/dash_base.html" %}
+{% block title %} | Proyectos {% endblock %}
+{% block body %}
+<ul class="nav nav-tabs justify-content-end" role="tablist" id="myTab">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" href="#owner" id="owner-tab" role="tab" data-toggle="tab" aria-controls="owner" aria-selected="true">Mis Proyectos</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" href="#collabs" id="collabs-tab" role="tab" data-toggle="tab" aria-controls="" aria-selected="collabs">Colaboraciones</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" href="#archived" id="archived-tab" role="tab" data-toggle="tab" aria-controls="" aria-selected="archived">Archivados</a>
+    </li>
+  </ul>
+<br>
+<div class="tab-content" id="myTabContent">
+    <div id="owner" class="tab-pane fade show active" role="tabpanel" aria-labelledby="owner-tab">
+        <h1 class="text-center">Mis Proyectos</h1>
+        <br><hr><br>
+        {% if current_user.projects %}
+        <table class="table table-dark text-center">
+            <thead>
+              <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Publico</th>
+                <th scope="col">Activo</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in current_user.projects %}
+              <tr>
+                  <th scope="row">{{ p.title }}</th>
+                  <td>
+                      {% if p.public %}
+                      <ion-icon name="checkmark-circle" class="text-success"></ion-icon>
+                      {% else %}
+                      <ion-icon name="close-circle" class="text-danger"></ion-icon>
+                      {% endif %}
+                  </td>
+                  <td><ion-icon name="checkmark-circle"></ion-icon></td>
+                  <td>
+                      <a href="#" class="btn btn-info btn-sm mx-auto">
+                          <ion-icon name="settings"></ion-icon>
+                          Administrar
+                      </a>
+                      <a href="#" class="btn btn-success btn-sm mx-auto">
+                          <ion-icon name="clipboard"></ion-icon>
+                          Tareas
+                      </a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="text-center">
+          <br>
+          <h1 class="display-4">Aún no tienes Proyectos</h1>
+        </div>
+        {% endif %}
+      <br><hr><br>
+      <div class="text-center">
+        <a href="{{ url_for('admin.show_new_project_form') }}" class="btn btn-primary btn-lg">Nuevo Proyecto</a>
+      </div>
+    </div>
+    <div id="collabs" class="tab-pane fade" role="tabpanel" aria-labelledby="collabs-tab">
+        <h1 class="text-center">Mis Colaboraciones</h1>
+        <br><hr><br>
+        {% if collab %}
+        <table class="table table-dark text-center">
+            <thead>
+              <tr>
+                <th scope="col">Autor</th>
+                <th scope="col">Título</th>
+                <th scope="col">Activo</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for p in collab %}
+                <tr>
+                    <th scope="row">{{ p.author.username }}</th>
+                    <td>{{ p.title }}</td>
+                    <td><ion-icon name="checkmark-circle"></ion-icon></td>
+                    <td>
+                        <a href="#" class="btn btn-info btn-sm mx-auto">
+                            <ion-icon name="chatbubbles"></ion-icon>
+                            Conversación
+                        </a>
+                        <a href="#" class="btn btn-success btn-sm mx-auto">
+                            <ion-icon name="clipboard"></ion-icon>
+                            Tareas
+                        </a>
+                    </td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="text-center">
+          <br>
+          <h1 class="display-4">Aún no tienes Colaboraciones</h1>
+        </div>
+        {% endif %}
+    </div>
+    <div id="archived" class="tab-pane fade" role="tabpanel" aria-labelledby="archived-tab">
+        <h1>Cómo están?</h1>
+    </div>
+</div>
+
+
+{% endblock %}

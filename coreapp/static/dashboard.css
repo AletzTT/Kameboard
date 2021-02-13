@@ -1,0 +1,124 @@
+/* ---------------------------------------------------
+    LAYOUT
+----------------------------------------------------- */
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 260px;
+    max-width: 260px;
+    background-color: #3d383b;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    min-width: 130px;    
+    max-width: 130px;
+    text-align: center;
+}
+
+#sidebarCollapse {
+    box-shadow: none;
+    outline: none;
+    border: none;
+    background-color: inherit;
+    border-radius: 1em;
+    
+}
+
+#sidebarCollapse.active {
+    rotate: 180deg;
+    background-color: #006655;
+}
+/* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
+#sidebar .sidebar-header span {
+    display: none;
+}
+#sidebar.active .sidebar-header h2 {
+    display: none;
+}
+#sidebar.active .sidebar-header span {
+    display: block;
+}
+
+#sidebar ul li a {
+    text-align: left;
+    font-size: 1.4em;
+    display: block;
+    margin: 0;
+    padding: 10px 30px;
+}
+
+#sidebar.active ul li a{
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+#sidebar.active ul li a ion-icon {
+    display: block;
+    width: 100%;
+    font-size: 2.4em;
+    margin-bottom: 5px;
+}
+/* ---------------------------------------------------
+    SIDEBAR STYLES
+----------------------------------------------------- */
+#sidebar .sidebar-header h2{
+    padding: 15px;
+    text-align: center;
+}
+
+#sidebar .sidebar-header span{
+    padding: 9px;
+    text-align: center;
+    font-size: 2em;
+}
+
+#sidebar .sidebar-username a{
+    display: block;
+    padding: 10px;
+    border-top: 1px solid #191516;
+    border-bottom: 1px solid #191516;
+    text-align: center;
+    font-size: 1.6em;
+    text-decoration: none;
+    color: #e8e8e8;
+}
+
+#sidebar .sidebar-username img{
+    border-radius: 50%;
+    height: 150px;
+}
+
+#sidebar.active .sidebar-username img{
+    border-radius: 50%;
+    height: 100px;
+}
+
+#sidebar ul li a{
+    color: #e8e8e8;
+    text-decoration: none;
+    transition: background-color 0.1s;
+}
+
+#sidebar ul li a:hover{
+    background-color: #ab2346;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#content .body {
+    margin: 10px 30px;
+}
+

@@ -1,0 +1,76 @@
+{% extends "admin/dash_base.html" %}
+{% block title%} | Nuevo Proyecto {% endblock%}
+{% block body %}
+<h1 class="text-center">Nuevo Proyecto</h1>
+<br><hr><br>
+<form action="" method="post" class="form w-75 mx-auto" novalidate>
+    {% from "_formhelpers.html" import render_field %}
+    {{ form.hidden_tag() }}
+    <div class="row">
+        <div class="col-10">
+            <label for="title-input">Título del Poryecto</label>
+            <div class="form-group">
+                <div class="input-group input-group-lg">
+                    {{ render_field(form.title, class="form-control", placeholder="Título", id="title-input") }}
+                </div>
+                {% for error in form.title.errors %}
+                <div class="d-block pl-2">
+                    <span class="text-warning">{{ error }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            <hr>
+            <label for="description-input">Descripción del Proyecto</label>
+            <div class="form-group">
+                <div class="input-group input-group-lg">
+                    {{ render_field(form.description, class="form-control", placeholder="", id="description-input", rows=8) }}
+                </div>
+                {% for error in form.description.errors %}
+                <div class="d-block pl-2">
+                    <span class="text-warning">{{ error }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-2">
+            <label for="date-input">Fecha Límite</label>
+            <div class="form-group">
+                <div class="input-group input-group-lg">
+                    {{ render_field(form.limit_date, class="form-control", placeholder="aaaa-mm-dd", id="date-input") }}
+                </div>
+                {% for error in form.limit_date.errors %}
+                <div class="d-block pl-2">
+                    <span class="text-warning">{{ error }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            <hr>
+            <label for="color-input">Color</label>
+            <div class="form-group">
+                <div class="input-group input-group-lg">
+                    <input type="color" class="form-control", id="color-input", value="#00b295", name="color">
+                </div>
+            </div>
+            <hr>
+            <div class="form-group form-check">
+                {{ render_field(form.public, class="form-check-input", id="public-input") }}
+                <label for="public-input" class="form-check-label">Público</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="collabs-input">Colaboradores</label>
+                {{ render_field(form.collaborators, class="form-control", id="collabs-input") }}
+            </div>
+
+        </div>
+    </div>
+    <br><br>
+    <div class="col text-center">
+        {{ render_field(form.submit, class="btn btn-primary btn-lg mr-4")}}
+        <a href="{{ url_for('admin.dashboard') }}" class="btn btn-danger btn-lg ml-4">Cancelar</a>
+    </div>
+</form>
+{% endblock %}
